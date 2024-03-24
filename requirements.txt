@@ -1,0 +1,8 @@
+Django~=4.2.8
+channels~=4.0.0
+opencv-python~=4.8.1.78
+Pillow~=10.1.0
+easyocr~=1.7.1
+asgiref~=3.7.2
+pytesseract~=0.3.10
+djangorestframework~=3.14.0

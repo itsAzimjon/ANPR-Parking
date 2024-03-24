@@ -1,0 +1,222 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <link rel="apple-touch-icon" sizes="76x76" href="{% static 'assets/img/apple-icon.png' %}">
+  <link rel="icon" type="image/png" href="{% static 'assets/img/favicon.png' %}">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <title>
+    Main
+  </title>
+  <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
+  <!--     Fonts and icons     -->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
+  <!-- CSS Files -->
+  <link href="{% static 'assets/css/bootstrap.min.css' %}" rel="stylesheet" />
+  <link href="{% static 'assets/css/paper-dashboard.css' %}" rel="stylesheet" />
+  <link href="{% static 'assets/demo/demo.css' %}" rel="stylesheet" />
+</head>
+
+<body class="">
+  <div class="wrapper ">
+    <div class="sidebar" data-color="white" data-active-color="danger">
+      <div class="logo">
+        <a href="" class="simple-text text-center logo-normal">
+          RECORE
+        </a>
+      </div>
+      <div class="sidebar-wrapper">
+        <ul class="nav">
+          <li>
+            <a href="{% url 'latest' %}">
+              <i class="nc-icon nc-bank"></i>
+              <p>Asosiy sahifa</p>
+            </a>
+          </li>
+          <li class="active">
+            <a href="{% url 'list' %}">
+              <i class="nc-icon nc-tile-56"></i>
+              <p>Mashinalar</p>
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <i class="nc-icon nc-single-02"></i>
+              <p>Foydalanuvchi</p>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="main-panel">
+      <!-- Navbar -->
+      <nav class="navbar navbar-expand-lg navbar-absolute fixed-top navbar-transparent">
+        <div class="container-fluid">
+          <div class="navbar-wrapper">
+            <div class="navbar-toggle">
+              <button type="button" class="navbar-toggler">
+                <span class="navbar-toggler-bar bar1"></span>
+                <span class="navbar-toggler-bar bar2"></span>
+                <span class="navbar-toggler-bar bar3"></span>
+              </button>
+            </div>
+            <a class="navbar-brand" href="javascript:;">Mashinalar Turargohi</a>
+          </div>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-bar navbar-kebab"></span>
+            <span class="navbar-toggler-bar navbar-kebab"></span>
+            <span class="navbar-toggler-bar navbar-kebab"></span>
+          </button>
+        </div>
+      </nav>
+      <!-- End Navbar -->
+      <div class="content">
+        <div class="row">
+          <div class="col-lg-4 col-md-6 col-sm-6">
+            <div class="card card-stats">
+              <div class="card-body ">
+                <div class="row">
+                  <div class="col-5 col-md-4">
+                    <div class="icon-big text-center icon-warning">
+                      <i class="fa fa-car text-secondary"></i>
+                    </div>
+                  </div>
+                  <div class="col-7 col-md-8">
+                    <div class="numbers">
+                      <p class="card-title border p-1"><span class="border-right pr-1">{{ car.number.upper|slice:":2" }}</span>{{ car.number.upper|slice:"2:" }}<p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card-footer ">
+                <hr>
+                <div class="stats">
+                  <i class="fa fa-refresh"></i>
+                  Mashina Raqami
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 col-sm-6">
+            <div class="card card-stats">
+              <div class="card-body ">
+                <div class="row">
+                  <div class="col-5 col-md-4">
+                    <div class="icon-big text-center icon-warning">
+                      <i class="nc-icon nc-money-coins text-success"></i>
+                    </div>
+                  </div>
+                  <div class="col-7 col-md-8">
+                    <div class="numbers">
+                      <p class="card-title">{{ car.price }} so'm<p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card-footer ">
+                <hr>
+                <div class="stats">
+                  <i class="fa fa-money"></i>
+                  Narxi
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 col-sm-6">
+            <div class="card card-stats">
+              <div class="card-body ">
+                <div class="row">
+                  <div class="col-5 col-md-4">
+                    <div class="icon-big text-center icon-warning">
+                      <i class="nc-icon nc-time-alarm text-danger"></i>
+                    </div>
+                  </div>
+                  <div class="col-7 col-md-8">
+                    <div class="numbers">
+                      <p class="card-title">{{ car.duration }} <p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card-footer ">
+                <hr>
+                <div class="stats">
+                  <i class="fa fa-clock-o"></i>
+                  Vaqti
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row pt-4">
+          <div class="col-md-5">
+            <div class="card ">
+              <div class="card-header p-3">
+                <p class="card-title text-uppercase">Mashina Raqami Surati</p>
+                <img class="card-img-top" src="{{ car.plate_image.url }}" alt="Card image cap">
+              </div>
+              <div class="card-body  pb-0">
+                <p class="card-title text-uppercase">Qancha vaqt bo‘lgan</p>
+                <div class="alert alert-secondary" role="alert">
+                    <h6 class="text-dark p-0 ">{{ car.duration }}</h6>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-7">
+            <div class="card card-chart">
+              <div class="card-header">
+                <p class="card-title text-uppercase">Kirish Vaqti</p>
+              </div>
+              <div class="card-body  pb-0">
+                <div class="alert alert-secondary" role="alert">
+                    <h6 class="text-dark p-0 ">{{ car.create_time }}</h6>
+                </div>
+              </div>
+              <div class="card-header pt-0">
+                <p class="card-title text-uppercase">Chiqish vaqti</p>
+              </div>
+              <div class="card-body pb-0">
+                <div class="alert alert-secondary" role="alert">
+                    <h6 class="text-dark p-0 ">{% if car.finish_time %} {{ car.finish_time }} {% else %} _ {% endif %}</h6>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <footer class="footer footer-black  footer-white ">
+        <div class="container-fluid">
+          <div class="row">
+
+            <div class="credits ml-auto">
+              <span class="copyright">
+                © <script>
+                  document.write(new Date().getFullYear())
+                </script> Recore
+              </span>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+  <!--   Core JS Files   -->
+  <script src="{% static 'assets/js/core/jquery.min.js' %}"></script>
+  <script src="{% static 'assets/js/core/bootstrap.min.js' %}"></script>
+<script src="{% static 'assets/js/plugins/bootstrap-notify.js' %}"></script>
+<script src="{% static 'assets/js/plugins/perfect-scrollbar.jquery.min.js' %}"></script>
+<script src="{% static 'assets/js/plugins/chartjs.min.js' %}"></script>
+<script src="{% static 'assets/js/paper-dashboard.min.js' %}"></script>
+<script src="{% static 'assets/demo/demo.js' %}"></script>
+  <script>
+    $(document).ready(function() {
+      demo.initChartsPages();
+    });
+  </script>
+</body>
+
+</html>
